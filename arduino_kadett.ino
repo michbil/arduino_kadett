@@ -54,7 +54,7 @@ signed long filter_do(struct filter *f,signed long data) {
 }
 
 
-int speedt,speedo;
+long speedt,speedo;
 void speed() {
   
  
@@ -66,7 +66,7 @@ int timer1_counter;
 ISR(TIMER1_OVF_vect)        // interrupt service routine 
 {
   speedo = speedt;
-  speedt=0;
+  //speedt=0;
   timer1_counter = 34286;   // preload timer 65536-16MHz/256/2Hz
 }
 
@@ -107,7 +107,7 @@ void setup() {
   lcd.print("Fuel");
 }
 
-
+double k = 0.0277016860218373;
 
 void loop() {
   lcd.setCursor(10, 1);
@@ -117,14 +117,17 @@ void loop() {
   long adc = filter_do(&fuel,v);
   adc *= 500;
   adc >>= 10;
+  adc = 500 - adc;
   lcd.print(adc/ 100);lcd.print(".");lcd.print(adc%100);
   delay(80);
 
    lcd.setCursor(10, 0);
-  lcd.print("     ");
+  lcd.print("          ");
   lcd.setCursor(10, 0);
-  lcd.print(speedo*10/55);
-
+  //lcd.print(speedo*10/55);
+  double v = (double)speedt * k/100;
+  lcd.print((long)v/10);lcd.print(".");lcd.print((long)v%10);yy
+  
   if (!digitalRead(8)) {
     lcd.setCursor(0, 0);
     lcd.print("                        ");
@@ -132,6 +135,11 @@ void loop() {
 
   
 }
+
+// 129595 imp / 3590m
+
+// 0,0277016860218373 m/imp
+
 
 void countTime() {
   
