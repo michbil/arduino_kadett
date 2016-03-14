@@ -1,12 +1,15 @@
 /*
 
+ SPEED PULSE: PIN 2
+ RESET BUTTON: PIN 8
+
  The circuit (make sure to power the LCD):
  * LCD RS pin to digital pin 12
  * LCD E pin to digital pin 11
  * LCD D4 pin to digital pin 5
  * LCD D5 pin to digital pin 4
  * LCD D6 pin to digital pin 3
- * LCD D7 pin to digital pin 2
+ * LCD D7 pin to digital pin 9
  * LCD Ve pin (contrast) to digital pin 6
  
  */
