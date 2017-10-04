@@ -17,3 +17,6 @@ SPEED PULSE: PIN 2
  * LCD D6 pin to digital pin 3
  * LCD D7 pin to digital pin 9
  * LCD Ve pin (contrast) to digital pin 6
+ 
+ 
+ ![Connection diagram](https://raw.githubusercontent.com/michbil/arduino_kadett/master/photos/2015-09-12%2011.55.39.jpg)
